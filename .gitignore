@@ -1,0 +1,23 @@
+## Gradle ##
+build/
+.gradle/
+/bin/
+
+## Eclipse ##
+.classpath
+.project
+.settings
+
+## IntelliJ IDEA ##
+.idea
+out
+*.iml
+*.ipr
+*.iws
+.DS_Store
+
+## Heroku ##
+src/main/resources/application.properties
+
+## Spring-Boot ##
+src/main/resources/application.properties
