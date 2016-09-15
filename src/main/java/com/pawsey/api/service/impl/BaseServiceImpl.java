@@ -4,6 +4,7 @@ import com.pawsey.api.repository.BaseRepository;
 import com.pawsey.api.service.BaseService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,18 +28,7 @@ public abstract class BaseServiceImpl<T, TRepository extends BaseRepository> imp
     @Override
     @Transactional
     public T create(T entity) {
-        try {
-            T response = (T) repository.save(entity);
-            LOGGER.info(entity.getClass().getSimpleName()
-                    + " with hash of " + entity.toString() + " sucessfully had it's collections persisted.");
-            return response;
-        } catch(Exception e) {
-            String stateMessage = entity.getClass().getSimpleName()
-                    + " with hash of " + entity.toString() + " was not persisted successfully.";
-            PersistenceException persistenceException = new PersistenceException(stateMessage);
-            LOGGER.error(e);
-            throw persistenceException;
-        }
+        return createOrUpdateEntity(entity);
     }
 
     @Override
@@ -80,16 +70,8 @@ public abstract class BaseServiceImpl<T, TRepository extends BaseRepository> imp
 
     @Override
     @Transactional
-    public T update(T entity) throws CredentialException {
-        if (entity != null) {
-            T persistedEntity = (T) repository.save(entity);
-            return persistedEntity;
-        } else {
-            String stateMessage = entity.getClass().getSimpleName() + " update operation failed.";
-            IllegalArgumentException e = new IllegalArgumentException(stateMessage);
-            LOGGER.error(e);
-            throw e;
-        }
+    public T update(T entity) {
+        return createOrUpdateEntity(entity);
     }
 
     @Override
@@ -103,6 +85,21 @@ public abstract class BaseServiceImpl<T, TRepository extends BaseRepository> imp
         } catch (Exception e) {
             LOGGER.error(e);
             throw e;
+        }
+    }
+
+    private T createOrUpdateEntity(T entity) {
+        try {
+            T response = (T) repository.save(entity);
+            LOGGER.info(entity.getClass().getSimpleName()
+                    + " with hash of " + entity.toString() + " was persisted.");
+            return response;
+        } catch(Exception e) {
+            String stateMessage = entity.getClass().getSimpleName()
+                    + " with hash of " + entity.toString() + " was not persisted successfully.";
+            PersistenceException persistenceException = new PersistenceException(stateMessage);
+            LOGGER.error(e);
+            throw persistenceException;
         }
     }
 
