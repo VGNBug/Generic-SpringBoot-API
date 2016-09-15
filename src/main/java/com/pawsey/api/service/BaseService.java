@@ -7,6 +7,7 @@ package com.pawsey.api.service;
 import org.springframework.stereotype.Service;
 
 import javax.security.auth.login.CredentialException;
+
 import java.util.List;
 
 /**
@@ -14,6 +15,7 @@ import java.util.List;
  *
  * @param <T> The main entity type to be acted on by this service.
  */
+@Service
 public interface BaseService<T>
 {
 	T create(T entity) throws Exception;
@@ -22,7 +24,7 @@ public interface BaseService<T>
 
 	List<T> findAll();
 
-	T update(T entity) throws CredentialException;
+	T update(T entity);
 
 	void delete(T credentials);
 }
