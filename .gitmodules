@@ -1,0 +1,3 @@
+[submodule "HtmlUtils"]
+	path = HtmlUtils
+	url = https://github.com/VGNBug/HtmlUtils.git
