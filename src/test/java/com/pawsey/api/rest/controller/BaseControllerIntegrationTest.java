@@ -96,7 +96,7 @@ public abstract class BaseControllerIntegrationTest<T> {
     }
 
     private IDataSet readDataSet() throws Exception {
-        return new FlatXmlDataSetBuilder().build(new File("src/test/resources/dataset.xml"));
+        return new FlatXmlDataSetBuilder().build(new File("src/test-integration/resources/dataset.xml"));
     }
 
     private void cleanlyInsertDataset(IDataSet dataSet) throws Exception {
