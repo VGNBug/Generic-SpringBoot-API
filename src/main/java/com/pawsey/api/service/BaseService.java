@@ -18,7 +18,7 @@ import java.util.List;
 @Service
 public interface BaseService<T>
 {
-	T create(T entity);
+	T create(T entity) throws Exception;
 
 	T findById(Integer id);
 

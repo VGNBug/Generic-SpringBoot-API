@@ -32,7 +32,7 @@ public abstract class BaseServiceTest<T, TService extends BaseService, TReposito
         when(repository.findAll()).thenReturn(entityList);
     }
 
-    public T runTestCreate(T entity) {
+    public T runTestCreate(T entity) throws Exception {
         T response = (T) service.create(entity);
 
         return saveAssertions(entity, response);
@@ -77,13 +77,13 @@ public abstract class BaseServiceTest<T, TService extends BaseService, TReposito
 
     public abstract void setupRepositorySaveMock();
 
-    protected abstract void setEntity();
+    protected abstract void setEntities();
 
-    protected abstract void setRepository();
+    protected abstract void setRepositories();
 
     protected abstract void setService();
 
-    public abstract void testCreate();
+    public abstract void testCreate() throws Exception;
 
     public abstract void testFindById();
 

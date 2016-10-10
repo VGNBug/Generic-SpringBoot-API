@@ -27,7 +27,7 @@ public abstract class BaseServiceImpl<T, TRepository extends BaseRepository> imp
 
     @Override
     @Transactional
-    public T create(T entity) {
+    public T create(T entity) throws Exception {
         return createOrUpdateEntity(entity);
     }
 
