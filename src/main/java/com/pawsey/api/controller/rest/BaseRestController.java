@@ -1,4 +1,4 @@
-package com.pawsey.api.rest.controller;
+package com.pawsey.api.controller.rest;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;

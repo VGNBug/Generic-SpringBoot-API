@@ -1,4 +1,4 @@
-package com.pawsey.api.rest.controller;
+package com.pawsey.api.controller.rest;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -44,7 +44,7 @@ public abstract class BaseControllerIntegrationTest<T> {
     private final String PASSWORD = "postgres";
 
     /**
-     * The {@link com.pawsey.api.rest.controller.BaseRestController#create(Map)} method relies on fields unique to
+     * The {@link BaseRestController#create(Map)} method relies on fields unique to
      * entities, so must be implemented by tests themselves.
      */
     protected abstract void testCreate();
@@ -52,7 +52,7 @@ public abstract class BaseControllerIntegrationTest<T> {
     protected abstract void testRead();
 
     /**
-     * The {@link com.pawsey.api.rest.controller.BaseRestController#update(Map)} method relies on fields unique to
+     * The {@link BaseRestController#update(Map)} method relies on fields unique to
      * entities, so must be implemented by tests themselves.
      */
     protected abstract void testUpdate();
