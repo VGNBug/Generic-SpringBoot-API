@@ -1,6 +1,7 @@
-package com.pawsey.api.service;
+package com.pawsey.api.service.impl;
 
 import com.pawsey.api.repository.BaseRepository;
+import com.pawsey.api.service.BaseService;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.mockito.Mock;

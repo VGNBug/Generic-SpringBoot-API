@@ -29,14 +29,6 @@ repositories {
     maven { url "https://repo.spring.io/milestone" }
 }
 
-configurations {
-    testOutput
-    runtime
-}
-
-dependencies {
-    testOutput sourceSets.test.output
-}
 
 dependencies {
 
@@ -47,8 +39,8 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-jdbc')
 
     runtime('org.postgresql:postgresql')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile('org.dbunit:dbunit:2.4.9')
+    compile('org.springframework.boot:spring-boot-starter-test')
+    compile('org.dbunit:dbunit:2.4.9')
 }
 
 eclipse {
@@ -74,3 +66,11 @@ task copyToLib(type: Copy) {
 bootRepackage.enabled = false
 
 stage.dependsOn(copyToLib)
+
+configurations {
+    testOutput
+}
+
+dependencies {
+    testOutput sourceSets.test.output
+}

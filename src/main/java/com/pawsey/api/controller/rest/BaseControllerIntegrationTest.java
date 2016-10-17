@@ -7,6 +7,7 @@ import org.dbunit.JdbcDatabaseTester;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
+import org.junit.Assert;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.RestClientException;
@@ -81,7 +82,7 @@ public abstract class BaseControllerIntegrationTest<T> {
     }
 
     protected void makeDeleteRequest(final String controllerPath, final Integer idParam) {
-        assertNotNull("controllerPath cannot be null", controllerPath);
+        Assert.assertNotNull("controllerPath cannot be null", controllerPath);
 
         String url = API_URL + "/" + controllerPath + idParam.toString();
 
@@ -91,7 +92,7 @@ public abstract class BaseControllerIntegrationTest<T> {
         } catch (RestClientException e) {
             String failNotice = "delete request made at " + url + " failed";
             LOGGER.error(failNotice);
-            fail(failNotice);
+            Assert.fail(failNotice);
         }
     }
 
