@@ -31,10 +31,12 @@ repositories {
 
 configurations {
     testOutput
+    mainBuild
 }
 
 dependencies {
     testOutput sourceSets.test.output
+    mainBuild sourceSets.main.output
 }
 
 dependencies {
