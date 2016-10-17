@@ -29,6 +29,13 @@ repositories {
     maven { url "https://repo.spring.io/milestone" }
 }
 
+configurations {
+    testOutput
+}
+
+dependencies {
+    testOutput sourceSets.test.output
+}
 
 dependencies {
 
@@ -66,11 +73,3 @@ task copyToLib(type: Copy) {
 bootRepackage.enabled = false
 
 stage.dependsOn(copyToLib)
-
-configurations {
-    testOutput
-}
-
-dependencies {
-    testOutput sourceSets.test.output
-}
