@@ -9,8 +9,11 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        it."default"
     }
+}
+
+configurations {
+    it."default"
 }
 
 apply plugin: 'java'
