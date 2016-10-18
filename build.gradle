@@ -12,9 +12,9 @@ buildscript {
     }
 }
 
-configurations {
-    it."default"
-}
+//configurations {
+//    it."default"
+//}
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
@@ -71,10 +71,10 @@ bootRepackage.enabled = false
 
 stage.dependsOn(copyToLib)
 
-configurations {
-    testOutput
-}
-
-dependencies {
-    testOutput sourceSets.test.output
-}
+//configurations {
+//    testOutput
+//}
+//
+//dependencies {
+//    testOutput sourceSets.test.output
+//}
